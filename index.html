@@ -6,6 +6,7 @@
     <title>Unity WebGL Player | Com.QSheng.MyUrpDemoRole</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
+   
   </head>
   <body onload="Reset()" onresize="Reset()">
     <div id="unity-container" class="unity-desktop">
@@ -76,21 +77,21 @@
 
         var meta = document.createElement('meta');
         meta.name = 'viewport';
-        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        meta.content = 'width=device-width, height=device-height, initial-scale=2.0, minimum-scale=2.0,maximum-scale=2.0, user-scalable=no, shrink-to-fit=yes';
         document.getElementsByTagName('head')[0].appendChild(meta);
         container.className = "unity-mobile";
         canvas.className = "unity-mobile";
 
         // To lower canvas resolution on mobile devices to gain some
         // performance, uncomment the following line:
-        // config.devicePixelRatio = 1;
+         config.devicePixelRatio = 2;
 
         unityShowBanner('WebGL builds are not supported on mobile devices.');
       } else {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
 
-        canvas.style.width = "3849px";
-        canvas.style.height = "2160px";
+        canvas.style.width = "2560px";
+        canvas.style.height = "1600px";
       }
 
       loadingBar.style.display = "block";
@@ -110,7 +111,10 @@
 
       function Reset()
       {
-        unityInstance.SetFullscreen(1);
+        canvas.style.width = document.documentElement.clientWidth + "px";
+        canvas.style.height = document.documentElement.clientHeight + "px";
+        console.log(document.documentElement.clientHeight);
+        console.log(document.documentElement.clientWidth);
       }
 
     </script>
